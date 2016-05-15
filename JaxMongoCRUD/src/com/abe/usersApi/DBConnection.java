@@ -40,4 +40,11 @@ public class DBConnection {
 			return "Added " +user.getFname();
 	}
 
+	public static DBUser getUser(String emailAddress) {
+		if (!init)
+			connect();
+		DBUser u = ds.find(DBUser.class,"email =",emailAddress).get();
+		return u;
+	}
+
 }
