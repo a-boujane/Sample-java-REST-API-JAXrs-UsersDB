@@ -33,9 +33,8 @@ public class DBConnection {
 	public static String addUser(DBUser user){
 		if (!init)
 			connect();
-		if(ds.find(DBUser.class).filter("email", user.getEmail())!=null){
-			System.out.println(ds.find(DBUser.class).filter("email", user.getEmail()));
-			return "User Exists Already!";
+		if(ds.find(DBUser.class,"email =",user.getEmail()).countAll()>0){
+			return "Another User with the same email address exists already! pleas try a different e-mail address";
 		}
 		ds.save(user);
 			return "Added " +user.getFname();
