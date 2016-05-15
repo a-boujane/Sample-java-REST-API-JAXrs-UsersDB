@@ -12,6 +12,18 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
+
+/**
+ * @author abe
+ *
+ *This class represents a single user in the MongoDB.
+ *It is used for both Morphia for the DB mapping, as well as
+ *the xml binding for the application/json or application/xml response
+ *to the http GET request
+ * 
+ * (It includes both annotations - Morphia and JAXB)
+ * 
+ */
 @Entity("users")
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
