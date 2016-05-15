@@ -1,5 +1,7 @@
 package com.abe.usersApi;
 
+
+
 import java.util.List;
 
 import org.mongodb.morphia.Datastore;
@@ -28,10 +30,15 @@ public class DBConnection {
 		return l;
 	}
 	
-	public static void addUser(DBUser user){
+	public static String addUser(DBUser user){
 		if (!init)
 			connect();
+		if(ds.find(DBUser.class).filter("email", user.getEmail())!=null){
+			System.out.println(ds.find(DBUser.class).filter("email", user.getEmail()));
+			return "User Exists Already!";
+		}
 		ds.save(user);
+			return "Added " +user.getFname();
 	}
 
 }
