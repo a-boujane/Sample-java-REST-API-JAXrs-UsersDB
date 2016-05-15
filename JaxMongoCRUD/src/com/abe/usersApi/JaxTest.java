@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 public class JaxTest {
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public List<DBUser> itWorks(){
 		return DBConnection.getList();
 	}
