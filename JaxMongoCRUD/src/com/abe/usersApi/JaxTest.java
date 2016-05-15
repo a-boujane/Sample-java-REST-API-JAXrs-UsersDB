@@ -23,19 +23,20 @@ public class JaxTest {
 		return DBConnection.getList();
 	}
 
+	// This is to return a single user by email address
+	@GET
+	@Path("{emailAddress}")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public DBUser getUser(@PathParam("emailAddress") String emailAddress) {
+		return DBConnection.getUser(emailAddress);
+	}
+
 	// This method allows to add a new user to the DB
 	@POST
 	@Consumes({ "application/json", "application/xml" })
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(DBUser user) {
 		return DBConnection.addUser(user);
-	}
-// This is to return a single user by email address
-	@GET
-	@Path("{emailAddress}")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public DBUser getUser(@PathParam("emailAddress") String emailAddress) {
-		return DBConnection.getUser(emailAddress);
 	}
 
 }
