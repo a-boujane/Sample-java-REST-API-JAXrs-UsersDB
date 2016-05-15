@@ -25,6 +25,14 @@ import org.mongodb.morphia.annotations.Property;
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DBUser {
+
+	static String MONGOD_FNAME = "fname";
+	static String MONGOD_LNAME = "lname";
+	static String MONGOD_UNAME = "uname";
+	static String MONGOD_EMAIL = "email";
+	static String MONGOD_PIC = "pic";
+	static String MONGOD_ONLINE = "online";
+
 	@Id
 	@XmlTransient
 	private ObjectId _id;
