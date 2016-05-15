@@ -54,12 +54,13 @@ public class DBConnection {
 		return "User associatd with " + emailAddress + " has been deleted from the Database";
 	}
 
-	public static DBUser modifyUser(DBUser user){
+	public static DBUser modifyUser(String oldEmailAddress, DBUser user){
 		if (!init)
 			connect();
 		
-		Query<DBUser> q = ds.find(DBUser.class, "email =", user.getEmail());
+		Query<DBUser> q = ds.find(DBUser.class, "email =", oldEmailAddress);
 		UpdateOperations<DBUser> up = ds.createUpdateOperations(DBUser.class)
+				.set(DBUser.MONGOD_EMAIL, user.getEmail())
 				.set(DBUser.MONGOD_FNAME, user.getFname())
 				.set(DBUser.MONGOD_LNAME, user.getLname())
 				.set(DBUser.MONGOD_UNAME, user.getUname())
