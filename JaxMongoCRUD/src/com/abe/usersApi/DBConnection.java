@@ -61,10 +61,10 @@ public class DBConnection {
 		
 		Query<DBUser> q = ds.find(DBUser.class, "email =", user.getEmail());
 		UpdateOperations<DBUser> up = ds.createUpdateOperations(DBUser.class)
-				.set(DBUser.MONGOD_EMAIL,user.getEmail())
 				.set(DBUser.MONGOD_FNAME, user.getFname())
 				.set(DBUser.MONGOD_LNAME, user.getLname())
-				.set(DBUser.MONGOD_UNAME, user.getUname());
+				.set(DBUser.MONGOD_UNAME, user.getUname())
+				.set(DBUser.MONGOD_PIC, user.getPic());
 		return ds.findAndModify(q,up);
 		
 	}
