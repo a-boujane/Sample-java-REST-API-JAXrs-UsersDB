@@ -59,6 +59,7 @@ public class DBConnection {
 			connect();
 		
 		Query<DBUser> q = ds.find(DBUser.class, "email =", oldEmailAddress);
+		if(q.countAll()>0){
 		UpdateOperations<DBUser> up = ds.createUpdateOperations(DBUser.class)
 				.set(DBUser.MONGOD_EMAIL, user.getEmail())
 				.set(DBUser.MONGOD_FNAME, user.getFname())
@@ -66,6 +67,9 @@ public class DBConnection {
 				.set(DBUser.MONGOD_UNAME, user.getUname())
 				.set(DBUser.MONGOD_PIC, user.getPic());
 		return ds.findAndModify(q,up);
+		}
+		else
+			return null;
 		
 	}
 	
