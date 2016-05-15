@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
@@ -16,6 +17,7 @@ import org.mongodb.morphia.annotations.Property;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DBUser {
 	@Id
+	@XmlTransient
 	private ObjectId _id;
 	@Property
 	@XmlElement(required = true)
@@ -33,6 +35,7 @@ public class DBUser {
 	@XmlElement(required = true)
 	private String pic;
 	@Property
+	@XmlTransient
 	private boolean online;
 
 
