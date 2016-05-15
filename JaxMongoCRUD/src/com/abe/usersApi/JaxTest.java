@@ -1,5 +1,7 @@
 package com.abe.usersApi;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,19 +13,18 @@ import javax.ws.rs.core.Response;
 @Path("/users")
 public class JaxTest {
 
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public User itWorks(@Context HttpHeaders hh ){
-//		User u = new User("Abe","Boujane","Abeb_admin",24);
-//		return u;
-//	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<DBUser> itWorks(){
+		return DBConnection.getList();
+	}
 	
-//	@GET
-//	@Path("/cooki")
-//	@Produces(MediaType.TEXT_PLAIN)
-//	public Response echoRequest(){
-//		
-//		return Response.ok().cookie(new NewCookie("cookieName","cookievalue")).build();
-//	}
+	@GET
+	@Path("/cooki")
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response echoRequest(){
+		
+		return Response.ok().cookie(new NewCookie("cookieName","cookievalue")).build();
+	}
 	
 }
