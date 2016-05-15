@@ -1,7 +1,9 @@
 package com.abe.usersApi;
 
 import java.util.List;
+
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,8 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * @author abe This Class Follows the REST architecture/naming convention to
- *         interact with a DB of users
+ * @author abe 
+ * This Class Follows the REST architecture/naming convention to
+ *  interact with a DB of users
  */
 @Path("/users")
 public class JaxTest {
@@ -33,10 +36,19 @@ public class JaxTest {
 
 	// This method allows to add a new user to the DB
 	@POST
+	@Path("/add")
 	@Consumes({ "application/json", "application/xml" })
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(DBUser user) {
 		return DBConnection.addUser(user);
+	}
+	
+	
+	@DELETE
+	@Path("{emailAddress}")
+	@Produces({ MediaType.TEXT_PLAIN })
+	public String deleteUser(@PathParam("emailAddress") String emailAddress) {
+		return DBConnection.deleteUser(emailAddress);
 	}
 
 }
