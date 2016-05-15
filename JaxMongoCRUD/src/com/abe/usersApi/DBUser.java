@@ -1,6 +1,5 @@
 package com.abe.usersApi;
 
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,16 +11,14 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-
 /**
  * @author abe
  *
- *This class represents a single user in the MongoDB.
- *It is used for both Morphia for the DB mapping, as well as
- *the xml binding for the application/json or application/xml response
- *to the http GET request
+ *         This class represents a single user in the MongoDB. It is used for
+ *         both Morphia for the DB mapping, as well as the xml binding for the
+ *         application/json or application/xml response to the http GET request
  * 
- * (It includes both annotations - Morphia and JAXB)
+ *         (It includes both annotations - Morphia and JAXB)
  * 
  */
 @Entity("users")
@@ -44,16 +41,30 @@ public class DBUser {
 	@XmlElement(required = true)
 	private String email;
 	@Property
-	@XmlElement(required = true)
+	@XmlElement()
 	private String pic;
 	@Property
 	@XmlTransient
 	private boolean online;
 
-
-
 	public DBUser() {
 
+	}
+
+	public DBUser(String fname, String lname, String uname, String email) {
+		this.fname = fname;
+		this.lname = lname;
+		this.uname = uname;
+		this.email = email;
+	}
+
+	public DBUser(String fname, String lname, String uname, String email, String pic) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.uname = uname;
+		this.email = email;
+		this.pic = pic;
 	}
 
 	public String getFname() {
@@ -80,7 +91,6 @@ public class DBUser {
 		this.uname = uname;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
@@ -97,6 +107,4 @@ public class DBUser {
 		this.pic = pic;
 	}
 
-
 }
-

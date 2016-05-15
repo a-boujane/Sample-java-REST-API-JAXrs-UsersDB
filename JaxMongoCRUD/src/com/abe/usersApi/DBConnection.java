@@ -27,5 +27,11 @@ public class DBConnection {
 		List<DBUser> l = ds.find(DBUser.class).asList();
 		return l;
 	}
+	
+	public static void addUser(DBUser user){
+		if (!init)
+			connect();
+		ds.save(user);
+	}
 
 }
