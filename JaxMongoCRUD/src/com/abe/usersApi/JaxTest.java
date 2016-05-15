@@ -23,8 +23,7 @@ public class JaxTest {
 	@Consumes({"application/json","application/xml"})
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(DBUser user){
-		DBConnection.addUser(user);
-		return "Merci!";
+		return DBConnection.addUser(user);
 	}
 	
 	
