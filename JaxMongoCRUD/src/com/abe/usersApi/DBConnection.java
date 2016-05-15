@@ -45,4 +45,11 @@ public class DBConnection {
 		return u;
 	}
 
+	public static String deleteUser(String emailAddress) {
+		if (!init)
+			connect();
+		ds.delete(ds.find(DBUser.class, "email =", emailAddress));
+		return "User associatd with "+ emailAddress +" has been deleted from the Database";
+	}
+
 }
