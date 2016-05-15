@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 
 import com.mongodb.MongoClient;
+import com.mongodb.operation.UpdateOperation;
 
 public class DBConnection {
 
@@ -49,7 +52,21 @@ public class DBConnection {
 		if (!init)
 			connect();
 		ds.delete(ds.find(DBUser.class, "email =", emailAddress));
-		return "User associatd with "+ emailAddress +" has been deleted from the Database";
+		return "User associatd with " + emailAddress + " has been deleted from the Database";
 	}
 
+	public static DBUser modifyUser(DBUser user){
+		if (!init)
+			connect();
+		
+		Query<DBUser> q = ds.find(DBUser.class, "email =", user.getEmail());
+		UpdateOperations<DBUser> up = ds.createUpdateOperations(DBUser.class)
+				.set(DBUser.MONGOD_EMAIL,user.getEmail())
+				.set(DBUser.MONGOD_FNAME, user.getFname())
+				.set(DBUser.MONGOD_LNAME, user.getLname())
+				.set(DBUser.MONGOD_UNAME, user.getUname());
+		return ds.findAndModify(q,up);
+		
+	}
+	
 }
