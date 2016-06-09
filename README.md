@@ -9,10 +9,6 @@ Morphia (for the MongoDB connection)
 
 It implements CRUD operations to interact with a nosql db (MongoDB in this case)
 
-Create = POST,
-Read = GET,
-Update = PUT,
-Delete = DELETE,
 
 Tested using Advanced REST client (available in GoogleChrome store for free)
 
