@@ -21,7 +21,7 @@ import org.mongodb.morphia.annotations.Property;
  *         (It includes both annotations - Morphia and JAXB)
  * 
  */
-@Entity("users")
+@Entity(value ="users", noClassnameStored = true)
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DBUser {

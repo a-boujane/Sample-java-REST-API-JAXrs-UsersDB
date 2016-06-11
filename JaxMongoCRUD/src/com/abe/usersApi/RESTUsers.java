@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
  *         convention to interact with a DB of users
  */
 @Path("/users")
-public class JaxTest {
+public class RESTUsers {
 
 	// This method returns all users in the DB
 	@GET
@@ -36,7 +36,6 @@ public class JaxTest {
 
 	// This method allows to add a new user to the DB
 	@POST
-	@Path("/add")
 	@Consumes({ "application/json", "application/xml" })
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addUser(DBUser user) {
