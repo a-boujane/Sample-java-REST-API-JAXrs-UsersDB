@@ -3,11 +3,11 @@
 
  - Send a POST req to http://www.salsaeternity.com:8081/api/users with a JSON/XML data to add a new user
  
- - Send a GET req to http://www.salsaeternity.com:8081/api/users/<emailAddress> to retrieve one user
+ - Send a GET req to http://www.salsaeternity.com:8081/api/users/(Here Goes the user's emailAddres) to retrieve one user
  
- - Sent a PUT req to http://www.salsaeternity.com:8081/api/users/<emailAddress> to modify an existing user (body : XML/JSON of the user)
+ - Sent a PUT req to http://www.salsaeternity.com:8081/api/users/(Here Goes the user's emailAddress) to modify an existing user (body : XML/JSON of the user)
  
- - Send a DELETE req  http://www.salsaeternity.com:8081/api/users/<emailAddress> to delete one user
+ - Send a DELETE req  http://www.salsaeternity.com:8081/api/users/(Here Goes the user's emailAddress) to delete one user
 
 
 # RESTJAXrsUsersDB
